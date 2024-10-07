@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DataLayer.ViewModels.UsersVendorViewModel>
+
+@{
+    ViewBag.Title = "محصولات جهت تامین";
+}
+
+<h2>لیست محصولات درخواستی جهت تامین</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+            <a href = "@Url.Action("Edit", "Product", new { id = item.GroupID})"><i class="glyphicon glyphicon-edit"></i></a>
+            @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>

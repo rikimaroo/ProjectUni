@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectStart_DBModelStoreContainer" CdmEntityContainer="ProjectStart_DBEntities">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="IsFinaly" ColumnName="IsFinaly" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PeriodIDRef" ColumnName="PeriodIDRef" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periods">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Period">
+        <MappingFragment StoreEntitySet="Periods">
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Brand">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Product_Brand">
+        <MappingFragment StoreEntitySet="Product_Brand">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Categorys">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Product_Categorys">
+        <MappingFragment StoreEntitySet="Product_Categorys">
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Product_CategoryID" ColumnName="Product_CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Selected_Category">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Product_Selected_Category">
+        <MappingFragment StoreEntitySet="Product_Selected_Category">
+          <ScalarProperty Name="CategoryIDRef" ColumnName="CategoryIDRef" />
+          <ScalarProperty Name="ProductIDRef" ColumnName="ProductIDRef" />
+          <ScalarProperty Name="PC_ID" ColumnName="PC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="CategoryIDRef" ColumnName="CategoryIDRef" />
+          <ScalarProperty Name="Expiration" ColumnName="Expiration" />
+          <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UserIDCreator" ColumnName="UserIDCreator" />
+          <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recive_Vendor_Products">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Recive_Vendor_Products">
+        <MappingFragment StoreEntitySet="Recive_Vendor_Products">
+          <ScalarProperty Name="ProductIDRef" ColumnName="ProductIDRef" />
+          <ScalarProperty Name="UserIDRef" ColumnName="UserIDRef" />
+          <ScalarProperty Name="RVP_ID" ColumnName="RVP_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleTitle" ColumnName="RoleTitle" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ActiveCode" ColumnName="ActiveCode" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendor_Groups">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Vendor_Groups">
+        <MappingFragment StoreEntitySet="Vendor_Groups">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendor_Products">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Vendor_Products">
+        <MappingFragment StoreEntitySet="Vendor_Products">
+          <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductIDRef" ColumnName="ProductIDRef" />
+          <ScalarProperty Name="UserIDRef" ColumnName="UserIDRef" />
+          <ScalarProperty Name="VendorProductID" ColumnName="VendorProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendor_Selected_Group">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Vendor_Selected_Group">
+        <MappingFragment StoreEntitySet="Vendor_Selected_Group">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="VG_ID" ColumnName="VG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendors">
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="UserIDRef" ColumnName="UserIDRef" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

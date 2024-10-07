@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DataLayer.ViewModels.OrderItemViewModel>
+@{
+    ViewBag.Title = "نمایش محصولات";
+}
+
+<h2>محصولات انتخاب شده</h2>
+
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>تصویر</th>
+            <th>عنوان</th>
+            <th>تعداد</th>
+            <th>قیمت</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Images/ProductImages/Thumb/@item.ProductImage" />
+                </td>
+                <td>@item.Title</td>
+                <td>@item.Count</td>
+                <td>@item.Price.ToString("#,0")</td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="col-md-3 col-md-offset-9">
+    <a href="@Url.Action("Payment", "Order")" class="btn btn-success btn-block">تایید و پرداخت</a>
+</div>
+

@@ -1,0 +1,42 @@
+﻿@model DataLayer.Product
+
+
+
+<div class="col-md-4 col-sm-6">
+    <div class="border-radius">
+        <span>
+            <img style="width:100%; height:150px" onclick="ShowProduct(@Model.ProductID)" src="~/Images/ProductImages/Thumb/@Model.ImageName">
+        </span>
+        <h2>
+            <a href="/ShowProduct/@Model.ProductID">@Model.Title</a>
+        </h2>
+        <span class="col-md-9 col-sm-9 col-xs-9 price-layer">
+            <label>@Model.Price.ToString("#,0")</label>
+        </span>
+        <br />
+        <div class="row" style="display:inline; ">
+            <a class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 buy-button border-radius">
+                <label onclick="AddMinusItem(@Model.ProductID)"><i class="glyphicon glyphicon-plus"></i></label>
+            </a>
+            <a class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 buy-button border-radius k-d-inline-flex">
+                <label onclick="AddMinusItem(@Model.ProductID, true)"><i class="glyphicon glyphicon-minus"></i></label>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+@*<script>
+    $(document).ready(function () {
+        gett();
+    });
+    function gett() {
+        $.ajax({
+            url: "/Order/CountOrderItem",
+            type: "GET",
+            success: function (res) {
+                console.log("sdsddsdsdsdsddsdsdsdsdds");
+            }
+        });
+    }
+</script>*@

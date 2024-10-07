@@ -1,0 +1,59 @@
+﻿@model DataLayer.ViewModels.UsersVendorViewModel
+@using DataLayer;
+@{
+    ViewBag.Title = "ویرایش کاربران گروه";
+    List<Vendor_Selected_Group> vendorSelectedGroup = ViewBag.vendorSelectedGroup;
+}
+
+<h2>افزودن کاربر به گروه</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(p => p.GroupID)
+    @Html.HiddenFor(p => p.UserID)
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.User, new SelectList(ViewBag.UserList, "UserID", "UserName"))
+                @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ذخیره" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Partial("UsersGroup", vendorSelectedGroup)
+
+@section Scripts{
+    <script>
+        function DeleteFromGroup(id) {
+            if (confirm("ایا از حذف کاربر از گروه مطمعن هستید؟")) {
+                $.ajax({
+                    url: "/Admin/Vendor/Delete",
+                    type: "Get",
+                    data: { id: id },
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            }
+        }
+    </script>
+}

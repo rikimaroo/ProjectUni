@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DataLayer.Vendor_Groups>
+
+@{
+    ViewBag.Title = "VendorGroup";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+        <th class="tr_Option_Vendor"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            <a href="@Url.Action("SendToVendor", "Vendor", new { id = item.GroupID, orderid = ViewBag.OrderID})" class="btn btn-success">ارسال</a>
+        </td>
+        <td class="tr_Option_Vendor">
+            @Html.ActionLink("Edit", "Edit", new { id=item.GroupID }) 
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>
+

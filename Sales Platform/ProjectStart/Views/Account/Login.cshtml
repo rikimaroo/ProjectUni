@@ -1,0 +1,142 @@
+﻿@model DataLayer.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "ورود به سایت";
+    //Layout = "~/Areas/Admin/Views/Shared/_DefaultLayout.cshtml";
+    Layout = null;
+}
+<head>
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/plugins.css" rel="stylesheet">
+</head>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <body class="rtl main-body leftmenu error-1">
+
+        <!-- SWITCHER -->
+        <!-- END SWITCHER -->
+        <!-- LOADEAR -->
+        <div id="global-loader" style="display: none;">
+            <img src="/Content/img/loader.svg" class="loader-img" alt="Loader">
+        </div>
+        <!-- END LOADEAR -->
+        <!-- END PAGE -->
+
+        <div class="page main-signin-wrapper">
+            
+            <!-- SWITCHER-ICON CODE -->
+            <div class="d-flex header-setting-icon demo-icon fa-spin">
+                <a class="nav-link icon" href="javascript:void(0)">
+                    <i class="fe fe-settings settings-icon "></i>
+                </a>
+            </div>
+            <!-- SWITCHER-ICON CODE -->
+            <!-- Row -->
+            <div class="row signpages text-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="row row-sm">
+                            <div class="col-lg-6 col-xl-5 d-none d-lg-block text-center bg-primary details">
+                                <div class="mt-5 pt-4 p-2 pos-absolute">
+                                    <img src="/Content/img/brand/logo-light.png" class="header-brand-img mb-4" alt="logo">
+                                    <div class="clearfix"></div>
+                                    <img src="https://php.spruko.com/spruha/spruha/assets/img/svgs/user.svg" class="ht-100 mb-0" alt="user">
+                                    <h5 class="mt-4 text-white">حساب کاربری برای خود بسازید</h5>
+                                    <span class="tx-white-6 tx-13 mb-5 mt-xl-0">برای ایجاد ، کشف و ارتباط با جامعه جهانی ثبت نام کنید</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-7 col-xs-12 col-sm-12 login_form ">
+                                <div class="main-container container-fluid">
+                                    <div class="row row-sm">
+                                        <div class="card-body mt-2 mb-2">
+                                            <img src="/Content/img/brand/logo-light.png" class="d-lg-none header-brand-img text-start float-start mb-4 error-logo-light" alt="logo">
+                                            <img src="/Content/img/brand/logo.png" class=" d-lg-none header-brand-img text-start float-start mb-4 error-logo" alt="logo">
+                                            <div class="clearfix"></div>
+
+                                            @if (User.Identity.IsAuthenticated && Request.QueryString["ReturnUrl"] != null)
+                                            {
+                                                <div class="alert alert-danger">
+                                                    <p>شما مجوز دسترسی به این بخش را ندارید</p>
+                                                </div>
+                                            }
+
+                                            <form>
+                                                <h5 class="text-start mb-2">به حساب خود وارد شوید</h5>
+                                                <p class="mb-4 text-muted tx-13 ms-0 text-start">ورود برای ایجاد ، کشف و ارتباط با جامعه جهانی</p>
+                                                <div class="form-group text-start">
+                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-start">
+                                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-start">
+                                                    @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label" })
+                                                    <div class="col-md-10">
+                                                        @Html.CheckBoxFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <input type="submit" class="btn btn-main-primary btn-block text-white" value="ورود" />
+                                            </form>
+                                            <div class="text-start mt-5 ms-0">
+                                                <div class="mb-1"><a href="forgot.html">رمز ورود را فراموش کرده اید؟</a></div>
+                                                <div>حساب ندارید؟ <a href="signup.html">اینجا ثبت نام کنید</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+
+
+        </div>
+        <!-- END PAGE -->
+        <!-- SCRIPTS -->
+        <!-- JQUERY JS -->
+        <script src="/Content/plugins/jquery/jquery.min.js"></script>
+
+        <!-- BOOTSTRAP JS -->
+        <script src="/Content/plugins/bootstrap/js/popper.min.js"></script>
+        <script src="/Content/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- PERFECT SCROLLBAR JS -->
+        <script src="/Content/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+        <!-- SELECT2 JS -->
+        <script src="/Content/plugins/select2/js/select2.min.js"></script>
+        <script src="/Content/js/select2.js"></script>
+
+
+
+        <!-- COLOR THEME JS -->
+        <script src="/Content/js/themeColors.js"></script>
+
+        <!-- CUSTOM JS -->
+        <script src="/Content/js/custom.js"></script>
+
+        <!-- SWITCHER JS -->
+        <script src="/Content/switcher/js/switcher.js"></script>
+
+        <!-- END SCRIPTS -->
+
+
+
+
+        <div class="main-navbar-backdrop"></div>
+    </body>
+}

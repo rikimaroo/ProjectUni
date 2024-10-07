@@ -1,0 +1,176 @@
+﻿@model DataLayer.User
+
+@{
+    ViewBag.Title = "پنل کاربری";
+    Layout = "~/Areas/Admin/Views/Shared/_DefaultLayout.cshtml";
+}
+
+@*<h2>پنل کاربری</h2>*@
+
+
+<div class="main-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+
+            <!-- Page Header -->
+            <div class="page-header">
+            </div>
+            <!-- End Page Header -->
+            <!-- Row -->
+            <div class="row row-sm">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card custom-card main-content-body-profile">
+                        <div class="tab-content">
+
+                            <div class="main-content-body tab-pane p-4 border-top-0 active" id="edit">
+                                <div class="card-body border">
+                                    <div class="mb-4 main-content-label">اطلاعات شخصی</div>
+                                    @using (Html.BeginForm("ChangeInformation", "Account", FormMethod.Post, new { area = "UserPanel" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <form class="form-horizontal">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            @Html.HiddenFor(model => model.UserID)
+
+                                            <div class="form-group ">
+                                                <div class="row row-sm">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "control-label form-label" })
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(model => model.Role.RoleTitle, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                        @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="row row-sm">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label form-label" })
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4 main-content-label">اطلاعات تماس</div>
+                                            <div class="form-group ">
+                                                <div class="row row-sm">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label form-label" })
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @if (Model.RoleID == 3)
+                                            {
+                                                <div class="form-group ">
+                                                    <div class="row row-sm">
+                                                        <div class="col-md-3">
+                                                            @Html.LabelFor(model => model.Vendors.FirstOrDefault().PhoneNumber, htmlAttributes: new { @class = "control-label form-label" })
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                                @Html.EditorFor(model => model.Vendors.FirstOrDefault().PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Vendors.FirstOrDefault().PhoneNumber, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <div class="row row-sm">
+                                                        <div class="col-md-3">
+                                                            @Html.LabelFor(model => model.Vendors.FirstOrDefault().MobileNumber, htmlAttributes: new { @class = "control-label form-label" })
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                                @Html.EditorFor(model => model.Vendors.FirstOrDefault().MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Vendors.FirstOrDefault().MobileNumber, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <div class="row row-sm">
+                                                        <div class="col-md-3">
+                                                            @Html.LabelFor(model => model.Vendors.FirstOrDefault().WebSite, htmlAttributes: new { @class = "control-label form-label" })
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                                @Html.EditorFor(model => model.Vendors.FirstOrDefault().WebSite, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Vendors.FirstOrDefault().WebSite, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4 main-content-label">اطلاعات اجتماعی</div>
+                                                <div class="form-group ">
+                                                    <div class="row row-sm">
+                                                        <div class="col-md-3">
+                                                            @Html.LabelFor(model => model.Vendors.FirstOrDefault().Address, htmlAttributes: new { @class = "control-label form-label" })
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                                @Html.EditorFor(model => model.Vendors.FirstOrDefault().Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Vendors.FirstOrDefault().Address, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="mb-4 main-content-label">درباره خودتان</div>
+                                            <div class="form-group ">
+                                                <div class="row row-sm">
+                                                    <div class="col-md-3">
+                                                        <label class="form-label">اطلاعات بیوگرافی</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <textarea class="form-control" name="example-textarea-input" rows="4" placeholder="">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="row row-sm">
+                                                    <div class="col-md-3 col">
+                                                        <label class="form-label">تایید</label>
+                                                    </div>
+                                                    <div class="col-md-9 col">
+                                                        <label class="ckbox mg-b-10-f">
+                                                            <input type="checkbox"><span>پست الکترونیک</span>
+                                                        </label>
+                                                        <label class="ckbox mg-b-10-f">
+                                                            <input checked="" type="checkbox"><span>پیامک</span>
+                                                        </label>
+                                                        <label class="ckbox mg-b-10-f">
+                                                            <input type="checkbox"><span>تلفن</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4 main-content-label">تنظیمات ایمیل</div>
+                                            <div class="form-group mb-0">
+                                                <div class="row row-sm">
+                                                    <div class="col-md-3">
+                                                        <label class="form-label">کاربر تأیید شده</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="custom-controls-stacked">
+                                                            <label class="ckbox mg-b-10-f"><input checked="" type="checkbox"><span> قبول کنید ایمیل های اطلاع رسانی پست یا صفحه را دریافت کنید</span></label>
+                                                            <label class="ckbox"><input checked="" type="checkbox"><span> قبول کنید نامه الکترونیکی ارسال شده به چندین گیرنده دریافت کنید</span></label>
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <button type="button" class="btn btn-primary ms-1">صرفه جویی</button>
+                                                            <button type="submit" class="btn btn-danger">تنظیم مجدد</button>
+                                                            <a href="/UserPanel/Account/ChangePassword" class="btn btn-warning">تغییر رمز عبور</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

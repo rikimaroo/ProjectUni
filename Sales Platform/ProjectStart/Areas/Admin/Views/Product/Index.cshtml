@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DataLayer.Product>
+
+@{
+    ViewBag.Title = "پنل ادمین - محصولات";
+}
+
+<h2>محصولات موجود</h2>
+
+<a href="/Admin/Product/Create" class="btn btn-primary" style="margin-bottom:10px">افزودن محصول جدید</a>
+
+<table class="table  border">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountValue)
+        </th>
+        <th>
+            <span>مبلغ نهایی</span>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th>امکانات</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @if (item.DiscountType == 0)
+                {
+                    <span>@item.DiscountValue %</span>
+                }
+                else if (item.DiscountType == 1)
+                {
+                    <span>@item.DiscountValue ريال</span>
+                }
+            </td>
+            <td>
+                @if (item.DiscountType == 0)
+                {
+                    var result = (item.Price * 100) / item.DiscountValue;
+                    <span>@result</span>
+                }
+                else if (item.DiscountType == 1)
+                {
+                    var result = (item.Price - item.DiscountValue);
+                    <span>@result</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available)
+            </td>
+            <td>
+                @item.CreateDate.ToShamsi()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Products", new { id = item.ProductID})" class="btn btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="@Url.Action("Details", "Products", new { id = item.ProductID})" class="btn btn-xs"><i class="glyphicon glyphicon-info-sign"></i></a>
+                <a href="@Url.Action("Delete", "Products", new { id = item.ProductID})" class="btn btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>

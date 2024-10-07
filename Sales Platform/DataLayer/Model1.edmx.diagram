@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="96e9d0e0aa824f5e97032bf42f48eb98" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Order" Width="1.5" PointX="10.5" PointY="9" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Period" Width="1.5" PointX="8.25" PointY="4.125" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Product_Brand" Width="1.5" PointX="6" PointY="6.625" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Product_Categorys" Width="1.5" PointX="11.25" PointY="13.25" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Product_Selected_Category" Width="1.5" PointX="13.5" PointY="12.375" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Product" Width="1.5" PointX="8.25" PointY="7.75" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Recive_Vendor_Products" Width="1.5" PointX="13.5" PointY="6.375" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Role" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.User" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Vendor_Groups" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Vendor_Products" Width="1.5" PointX="13.5" PointY="9.25" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Vendor_Selected_Group" Width="1.5" PointX="5.25" PointY="9.375" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Vendor" Width="1.5" PointX="5.25" PointY="21.375" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Orders_Periods" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Orders_Products" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Orders_Users" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Products_Periods" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Products_Product_Brand" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Product_Categorys_Product_Categorys" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Product_Selected_Category_Product_Categorys" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Product_Selected_Category_Products" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Products_Users" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Recive_Vendor_Products_Products" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Vendor_Products_Products" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Recive_Vendor_Products_Users" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Users_Roles" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Vendor_Products_Users" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Vendor_Selected_Group_Products" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Vendors_Users" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Vendor_Selected_Group_Vendor_Groups" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

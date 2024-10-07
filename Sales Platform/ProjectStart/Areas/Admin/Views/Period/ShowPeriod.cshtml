@@ -1,0 +1,92 @@
+﻿@model IEnumerable<DataLayer.ViewModels.ShowPeriodViewModel>
+
+@{
+    ViewBag.Title = "دوره ها";
+}
+
+<a onclick="CreatePeriod()" class="btn btn-primary">افزودن دوره جدید</a>
+
+<table class="table table-bordered" style="margin-top:10px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Month)
+        </th>
+        <th>امکانات</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Month)
+            </td>
+            <td>
+                <a onclick="EditPeriod(@item.PeriodID)" class="btn btn-sm"><i class="glyphicon glyphicon-edit"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MyModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span id="modalx" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="MyModalBody">
+                ...
+            </div>
+            @*            <div class="modal-footer">
+                    <button type="button" class="btn btn-success">ثبت</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function CreatePeriod() {
+            $.ajax({
+                url: "/Admin/Period/Create",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $("#MyModal").modal("show");
+                $("#MyModalLabel").html("افزودن دوره جدید");
+                $("#MyModalBody").html(result);
+            });
+        };
+
+        function EditPeriod(periodid) {
+            $.ajax({
+                url: "/Admin/Period/Edit",
+                type: "Get",
+                data: { id: periodid }
+            }).done(function (result) {
+                $("#MyModal").modal("show");
+                $("#MyModalLabel").html("افزودن دوره جدید");
+                $("#MyModalBody").html(result);
+            });
+        };
+
+        $("#modalx").click(function () {
+            $("#MyModal").modal("toggle");
+        });
+    </script>
+}

@@ -1,0 +1,10 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink(User.Identity.Name, "#", "#", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("خروج", "logOff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+}
+else
+{
+    @Html.ActionLink("ثبت نام", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("ورود", "login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+}

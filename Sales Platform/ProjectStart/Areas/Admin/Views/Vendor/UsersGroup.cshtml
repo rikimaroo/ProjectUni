@@ -1,0 +1,21 @@
+﻿@model IEnumerable<DataLayer.Vendor_Selected_Group>
+
+<h3>کابران گروه</h3>
+<table class="table table-bordered">
+
+    <tr>
+        <th>نام</th>
+        <th>ایمیل</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.User.UserName</td>
+            <td>@item.User.Email</td>
+            <th>
+                <a onclick="DeleteFromGroup(@item.VG_ID)" class="btn btn-sm">delete</a>
+            </th>
+        </tr>
+    }
+</table>

@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "ProjectStart\Web.csproj", "{2563A3AB-1A8C-4DAF-8D8B-AD90E5C9A357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "DataLayer\Common.csproj", "{4484C3AB-6B3F-4210-94BC-2520F059EE96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2563A3AB-1A8C-4DAF-8D8B-AD90E5C9A357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2563A3AB-1A8C-4DAF-8D8B-AD90E5C9A357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2563A3AB-1A8C-4DAF-8D8B-AD90E5C9A357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2563A3AB-1A8C-4DAF-8D8B-AD90E5C9A357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4484C3AB-6B3F-4210-94BC-2520F059EE96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4484C3AB-6B3F-4210-94BC-2520F059EE96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4484C3AB-6B3F-4210-94BC-2520F059EE96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4484C3AB-6B3F-4210-94BC-2520F059EE96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41D615D1-1F09-4921-9913-3F861F17B863}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.100.1:830/defaultcollection
+		SccProjectUniqueName0 = ProjectStart\\Web.csproj
+		SccProjectName0 = ProjectStart
+		SccLocalPath0 = ProjectStart
+		SccProjectUniqueName1 = DataLayer\\Common.csproj
+		SccProjectName1 = DataLayer
+		SccLocalPath1 = DataLayer
+		SccLocalPath2 = .
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DataLayer.ViewModels.OrderUserViewModel>
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>کاربران خریدار محصول</h2>
+
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                <p>نام کاربری</p>
+            </th>
+            <th>
+                <p>تاریخ خرید</p>
+            </th>
+            <th>
+                <p>تایید نهایی</p>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.UserName
+                </td>
+                <td>
+                    @item.Date.ToShamsi()
+                </td>
+                <td class="">
+                    <input type="checkbox" value="@item.IsFinaly" @(item.IsFinaly == true ? "checked" : "") disabled/>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectStart_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="PeriodIDRef" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="IsFinaly" Type="bit" />
+  </EntityType>
+  <EntityType Name="Periods">
+    <Key>
+      <PropertyRef Name="PeriodID" />
+    </Key>
+    <Property Name="PeriodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Brand">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Categorys">
+    <Key>
+      <PropertyRef Name="Product_CategoryID" />
+    </Key>
+    <Property Name="Product_CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+  </EntityType>
+  <EntityType Name="Product_Selected_Category">
+    <Key>
+      <PropertyRef Name="PC_ID" />
+    </Key>
+    <Property Name="PC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductIDRef" Type="int" Nullable="false" />
+    <Property Name="CategoryIDRef" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PeriodID" Type="int" Nullable="false" />
+    <Property Name="UserIDCreator" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="350" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="Available" Type="int" Nullable="false" />
+    <Property Name="ImageName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="DiscountType" Type="int" />
+    <Property Name="DiscountValue" Type="int" />
+    <Property Name="Expiration" Type="datetime" />
+    <Property Name="CategoryIDRef" Type="int" />
+    <Property Name="BrandID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recive_Vendor_Products">
+    <Key>
+      <PropertyRef Name="RVP_ID" />
+    </Key>
+    <Property Name="RVP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIDRef" Type="int" Nullable="false" />
+    <Property Name="ProductIDRef" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ActiveCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendor_Groups">
+    <Key>
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendor_Products">
+    <Key>
+      <PropertyRef Name="VendorProductID" />
+    </Key>
+    <Property Name="VendorProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIDRef" Type="int" Nullable="false" />
+    <Property Name="ProductIDRef" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="DiscountValue" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendor_Selected_Group">
+    <Key>
+      <PropertyRef Name="VG_ID" />
+    </Key>
+    <Property Name="VG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendors">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIDRef" Type="int" Nullable="false" />
+    <Property Name="Company" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="350" Nullable="false" />
+    <Property Name="WebSite" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Orders_Periods">
+    <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Periods">
+        <PropertyRef Name="PeriodID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="PeriodIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Categorys_Product_Categorys">
+    <End Role="Product_Categorys" Type="Self.Product_Categorys" Multiplicity="0..1" />
+    <End Role="Product_Categorys1" Type="Self.Product_Categorys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Categorys">
+        <PropertyRef Name="Product_CategoryID" />
+      </Principal>
+      <Dependent Role="Product_Categorys1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Selected_Category_Product_Categorys">
+    <End Role="Product_Categorys" Type="Self.Product_Categorys" Multiplicity="1" />
+    <End Role="Product_Selected_Category" Type="Self.Product_Selected_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Categorys">
+        <PropertyRef Name="Product_CategoryID" />
+      </Principal>
+      <Dependent Role="Product_Selected_Category">
+        <PropertyRef Name="CategoryIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Selected_Category_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Product_Selected_Category" Type="Self.Product_Selected_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Product_Selected_Category">
+        <PropertyRef Name="ProductIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Periods">
+    <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Periods">
+        <PropertyRef Name="PeriodID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="PeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Product_Brand">
+    <End Role="Product_Brand" Type="Self.Product_Brand" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="UserIDCreator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recive_Vendor_Products_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Recive_Vendor_Products" Type="Self.Recive_Vendor_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Recive_Vendor_Products">
+        <PropertyRef Name="ProductIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recive_Vendor_Products_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Recive_Vendor_Products" Type="Self.Recive_Vendor_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Recive_Vendor_Products">
+        <PropertyRef Name="UserIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Products_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Vendor_Products" Type="Self.Vendor_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Vendor_Products">
+        <PropertyRef Name="ProductIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Products_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Vendor_Products" Type="Self.Vendor_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Vendor_Products">
+        <PropertyRef Name="UserIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Selected_Group_Products">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Vendor_Selected_Group" Type="Self.Vendor_Selected_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Vendor_Selected_Group">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Selected_Group_Vendor_Groups">
+    <End Role="Vendor_Groups" Type="Self.Vendor_Groups" Multiplicity="1" />
+    <End Role="Vendor_Selected_Group" Type="Self.Vendor_Selected_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor_Groups">
+        <PropertyRef Name="GroupID" />
+      </Principal>
+      <Dependent Role="Vendor_Selected_Group">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendors_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Vendors" Type="Self.Vendors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Vendors">
+        <PropertyRef Name="UserIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectStart_DBModelStoreContainer">
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Periods" EntityType="Self.Periods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Brand" EntityType="Self.Product_Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Categorys" EntityType="Self.Product_Categorys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Selected_Category" EntityType="Self.Product_Selected_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recive_Vendor_Products" EntityType="Self.Recive_Vendor_Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor_Groups" EntityType="Self.Vendor_Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor_Products" EntityType="Self.Vendor_Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor_Selected_Group" EntityType="Self.Vendor_Selected_Group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Orders_Periods" Association="Self.FK_Orders_Periods">
+      <End Role="Periods" EntitySet="Periods" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Products" Association="Self.FK_Orders_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Categorys_Product_Categorys" Association="Self.FK_Product_Categorys_Product_Categorys">
+      <End Role="Product_Categorys" EntitySet="Product_Categorys" />
+      <End Role="Product_Categorys1" EntitySet="Product_Categorys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Selected_Category_Product_Categorys" Association="Self.FK_Product_Selected_Category_Product_Categorys">
+      <End Role="Product_Categorys" EntitySet="Product_Categorys" />
+      <End Role="Product_Selected_Category" EntitySet="Product_Selected_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Selected_Category_Products" Association="Self.FK_Product_Selected_Category_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Product_Selected_Category" EntitySet="Product_Selected_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Periods" Association="Self.FK_Products_Periods">
+      <End Role="Periods" EntitySet="Periods" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Product_Brand" Association="Self.FK_Products_Product_Brand">
+      <End Role="Product_Brand" EntitySet="Product_Brand" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Users" Association="Self.FK_Products_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recive_Vendor_Products_Products" Association="Self.FK_Recive_Vendor_Products_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Recive_Vendor_Products" EntitySet="Recive_Vendor_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recive_Vendor_Products_Users" Association="Self.FK_Recive_Vendor_Products_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Recive_Vendor_Products" EntitySet="Recive_Vendor_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Products_Products" Association="Self.FK_Vendor_Products_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Vendor_Products" EntitySet="Vendor_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Products_Users" Association="Self.FK_Vendor_Products_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Vendor_Products" EntitySet="Vendor_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Selected_Group_Products" Association="Self.FK_Vendor_Selected_Group_Products">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Vendor_Selected_Group" EntitySet="Vendor_Selected_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Selected_Group_Vendor_Groups" Association="Self.FK_Vendor_Selected_Group_Vendor_Groups">
+      <End Role="Vendor_Groups" EntitySet="Vendor_Groups" />
+      <End Role="Vendor_Selected_Group" EntitySet="Vendor_Selected_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendors_Users" Association="Self.FK_Vendors_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Vendors" EntitySet="Vendors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

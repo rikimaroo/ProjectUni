@@ -1,0 +1,208 @@
+﻿@model DataLayer.Product
+@using DataLayer;
+@{
+    ViewBag.Title = "ویرایش محصول";
+    List<Product_Selected_Category> Selected_Category = ViewBag.Selected_Category;
+}
+
+<h2>ویرایش محصول</h2>
+<div class="row">
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(p => p.ProductID)
+        @Html.HiddenFor(p => p.UserIDCreator)
+        @Html.HiddenFor(p => p.CreateDate)
+        @Html.HiddenFor(p => p.ImageName)
+        <div class="form-horizontal col-md-8">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Expiration, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Expiration, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Expiration, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DiscountType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.DiscountType, null, "انتخاب کنید", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DiscountType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="DivDiscountValue">
+                @Html.LabelFor(model => model.DiscountValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.DiscountValue, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DiscountValue, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PeriodID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.PeriodID, null, "انتخاب کنید", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PeriodID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BrandID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.BrandID, null, "انتخاب کنید", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BrandID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Available, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Available, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Available, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="ثبت" class="btn btn-warning" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">تصویر محصول</div>
+                <div class="panel-body">
+                    <img id="ImgPreViewProduct" style="margin:8px auto" class="thumbnail" src="~/Images/ProductImages/@Model.ImageName" />
+                    <div class="form-group ">
+                        <div class="col-md-10" style="margin-top:20px">
+                            <input type="file" id="ImageProduct" name="ImageProduct" />
+                            @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">انتخاب گروه</div>
+                <div class="panel-body">
+                    @{
+                        List<Product_Categorys> categoryList = ViewBag.Categorys;
+
+                        <ul>
+                            @foreach (var category in categoryList.Where(p => p.ParentID == null))
+                            {
+                                <li>
+                                    <input type="checkbox"  @(Selected_Category.Any(p=> p.CategoryIDRef == category.Product_CategoryID && Model.ProductID == p.ProductIDRef) ? "checked" : "") name="SelectedCategory" value="@category.Product_CategoryID" /><span> @category.Title</span>
+
+                                    @if (categoryList.Any(p => p.ParentID == category.Product_CategoryID))
+                                    {
+                                        <ul>
+                                            @foreach (var subCategory in categoryList.Where(p => p.ParentID == category.Product_CategoryID))
+                                            {
+                                                <li>
+                                                    <input type="checkbox" @(Selected_Category.Any(p=> p.CategoryIDRef == subCategory.Product_CategoryID && Model.ProductID == p.ProductIDRef) ? "checked" : "") name="SelectedCategory" value="@subCategory.Product_CategoryID" /><span> @subCategory.Title</span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#DiscountType").on("click", function () {
+                var discountType = $("#DiscountType").val();
+                if (discountType != "") {
+                    $("#DivDiscountValue").show();
+                }
+                else {
+                    $("#DivDiscountValue").hide();
+                }
+            });
+
+        });
+
+        function CheckDiscountValue() {
+            var value = parseInt($("#DiscountValue").val());
+            if ($("#DiscountType").val() == 0) {
+                if (value > 100) {
+                    $("#DiscountValue").val(100);
+                }
+                else if (value < 0) {
+                    $("#DiscountValue").val(0);
+                }
+            }
+        }
+
+        $("#DiscountValue").on("change", function () {
+            console.log("asdasd");
+            CheckDiscountValue();
+        });
+
+        function readUrl(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $("#ImgPreViewProduct").attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ImageProduct").change(function () {
+            readUrl(this);
+        });
+
+
+    </script>
+}
+

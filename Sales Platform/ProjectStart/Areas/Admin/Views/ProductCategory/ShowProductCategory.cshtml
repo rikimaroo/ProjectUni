@@ -1,0 +1,142 @@
+﻿@model IEnumerable<DataLayer.Product_Categorys>
+
+@{
+    ViewBag.Title = "گروه محصولات";
+}
+
+<h2>لیست گروه های محصول</h2>
+
+<a onclick="CreateCategory()" class="btn btn-primary">افزودن گروه جدید</a>
+<table class="table table-bordered" style="margin-top:10px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(p => p.ParentID == null))
+    {
+        <tr id="ul_@item.Product_CategoryID">
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+
+            @if (Model.Any(p => p.ParentID == item.Product_CategoryID))
+            {
+
+                <td>
+                    @foreach (var sub in Model.Where(p => p.ParentID == item.Product_CategoryID))
+                    {
+                        <ul id="ul_@sub.Product_CategoryID">
+                            <li>
+                                @sub.Title
+                                <a onclick="CreateCategory(@item.Product_CategoryID)" class="btn btn-sm"><i class="glyphicon glyphicon-plus"></i></a>
+                                <a onclick="EditCategory(@sub.Product_CategoryID)" class="btn btn-sm"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a onclick="DeleteCategory(@sub.Product_CategoryID)" class="btn btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
+                            </li>
+                        </ul>
+                    }
+
+                </td>
+
+            }
+            else
+            {
+                <td>
+                    <ul>
+                        <li>
+                            <a onclick="CreateCategory(@item.Product_CategoryID)" class="btn btn-sm"><i class="glyphicon glyphicon-plus"></i></a>
+                        </li>
+                    </ul>
+                </td>
+            }
+
+            <td>
+                <a onclick="EditCategory(@item.Product_CategoryID)" class="btn btn-sm"><i class="glyphicon glyphicon-edit"></i></a>
+                <a onclick="DeleteCategory(@item.Product_CategoryID)" class="btn btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
+                @* <a onclick="CreateCategory(@item.Product_CategoryID)" class="btn btn-sm"><i class="glyphicon glyphicon-plus"></i></a>*@
+
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MyModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="MyModalBody">
+                ...
+            </div>
+            @*            <div class="modal-footer">
+                    <button type="button" class="btn btn-success">ثبت</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function CreateCategory(id) {
+            $.ajax({
+                url: "/Admin/productcategory/CreateCategory",
+                type: "Get",
+                data: { id: id }
+            }).done(function (result) {
+                $("#MyModal").modal("show");
+                if (id != null) {
+                    $("#MyModalLabel").html("افزودن زیر گروه جدید");
+                }
+                else {
+                    $("#MyModalLabel").html("افزودن سر گروه جدید");
+                }
+                $("#MyModalBody").html(result);
+            });
+        };
+
+        function EditCategory(categoryid) {
+            $.ajax({
+                url: "/Admin/productcategory/EditCategory",
+                type: "Get",
+                data: { id: categoryid }
+            }).done(function (res) {
+                $("#MyModal").modal("show");
+                $("#MyModalLabel").html("ویرایش سر گروه");
+                $("#MyModalBody").html(res);
+            });
+        }
+
+        function DeleteCategory(categoryid) {
+            var category = categoryid;
+            if (confirm("ایا از حذف مطمعن هستید؟")) {
+                console.log("sdfsdf");
+                $.ajax({
+                    url: "/Admin/productcategory/DeleteCategory",
+                    type: "POST",
+                    data: { id: categoryid },
+                    success: function () {
+                        console.log("injaima");
+                    }
+
+                }).done(function () {
+                    console.log("asdasdasdasdasdasd");
+                    $("#ul_" + category).hide("slow");
+                });
+            }
+        }
+
+    </script>
+}
