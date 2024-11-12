@@ -119,7 +119,10 @@ namespace ProjectStart.Controllers
             List<OrderItem> orderList = new List<OrderItem>();
 
             orderList = Session["OrderItem"] as List<OrderItem>;
-
+            if (orderList.Sum(p=> orderList.Count) == null)
+            {
+                return 0;
+            }
             return orderList.Sum(p => p.Count);
         }
     }

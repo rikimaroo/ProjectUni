@@ -5,55 +5,54 @@
     //Layout = "~/Areas/Admin/Views/Shared/_DefaultLayout.cshtml";
     Layout = null;
 }
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-    <link href="~/Content/css/style.css" rel="stylesheet">
-    <link href="~/Content/css/plugins.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signin</title>
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet"
+          href="/Content/assest/plugins/bootstrap5.3/css/bootstrap.min.css" />
+    <!-- ICONS CSS -->
+    <link rel="stylesheet"
+          href="/Content/assest/plugins/icon/font/bootstrap-icons.css" />
+    <link rel="stylesheet"
+          href="/Content/assest/plugins/fontawesome-free-6.6.0-web/css/all.min.css" />
+    <!-- MDB CSS -->
+    <link rel="stylesheet" href="/Content/assest/plugins/mdb/css/mdb.rtl.min.css" />
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="/Content/assest/css/style.css" />
 </head>
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    <body>
+        <section class="vh-100" style="background-color: #ffff" id="container">
+            <div class="area">
+                <ul class="shape">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="container w-75 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-10 col-xl-6 col-lg-7 col-md-8">
+                            <div class="card" style="border-radius: 1rem">
+                                <div class="row g-0">
+                                    <div class="col d-flex align-items-center">
+                                        <div class="card-body p-4 p-lg-5 text-black">
 
-    <body class="rtl main-body leftmenu error-1">
-
-        <!-- SWITCHER -->
-        <!-- END SWITCHER -->
-        <!-- LOADEAR -->
-        <div id="global-loader" style="display: none;">
-            <img src="/Content/img/loader.svg" class="loader-img" alt="Loader">
-        </div>
-        <!-- END LOADEAR -->
-        <!-- END PAGE -->
-
-        <div class="page main-signin-wrapper">
-            
-            <!-- SWITCHER-ICON CODE -->
-            <div class="d-flex header-setting-icon demo-icon fa-spin">
-                <a class="nav-link icon" href="javascript:void(0)">
-                    <i class="fe fe-settings settings-icon "></i>
-                </a>
-            </div>
-            <!-- SWITCHER-ICON CODE -->
-            <!-- Row -->
-            <div class="row signpages text-center">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="row row-sm">
-                            <div class="col-lg-6 col-xl-5 d-none d-lg-block text-center bg-primary details">
-                                <div class="mt-5 pt-4 p-2 pos-absolute">
-                                    <img src="/Content/img/brand/logo-light.png" class="header-brand-img mb-4" alt="logo">
-                                    <div class="clearfix"></div>
-                                    <img src="https://php.spruko.com/spruha/spruha/assets/img/svgs/user.svg" class="ht-100 mb-0" alt="user">
-                                    <h5 class="mt-4 text-white">حساب کاربری برای خود بسازید</h5>
-                                    <span class="tx-white-6 tx-13 mb-5 mt-xl-0">برای ایجاد ، کشف و ارتباط با جامعه جهانی ثبت نام کنید</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-7 col-xs-12 col-sm-12 login_form ">
-                                <div class="main-container container-fluid">
-                                    <div class="row row-sm">
-                                        <div class="card-body mt-2 mb-2">
-                                            <img src="/Content/img/brand/logo-light.png" class="d-lg-none header-brand-img text-start float-start mb-4 error-logo-light" alt="logo">
-                                            <img src="/Content/img/brand/logo.png" class=" d-lg-none header-brand-img text-start float-start mb-4 error-logo" alt="logo">
-                                            <div class="clearfix"></div>
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            @*@Html.HiddenFor(p => p.RememberMe)*@
 
                                             @if (User.Identity.IsAuthenticated && Request.QueryString["ReturnUrl"] != null)
                                             {
@@ -62,37 +61,59 @@
                                                 </div>
                                             }
 
+                                            @if (Request.QueryString["ResetPasswrod"] != null)
+                                            {
+                                                <div class="alert alert-success">
+                                                    <p>رمز عبور شما با موفقیت تغییر کرد.</p>
+                                                </div>
+                                            }
+
                                             <form>
-                                                <h5 class="text-start mb-2">به حساب خود وارد شوید</h5>
-                                                <p class="mb-4 text-muted tx-13 ms-0 text-start">ورود برای ایجاد ، کشف و ارتباط با جامعه جهانی</p>
-                                                <div class="form-group text-start">
-                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                                                    <div class="col-md-10">
-                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group text-start">
-                                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
-                                                    <div class="col-md-10">
-                                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group text-start">
-                                                    @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label" })
-                                                    <div class="col-md-10">
-                                                        @Html.CheckBoxFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
-                                                    </div>
+                                                <div class="d-flex align-items-center mb-3 pb-1"></div>
+                                                <h4 class="mb-3 pb-3"
+                                                    style="letter-spacing: 1px; color: #424769">
+                                                    به حساب خود وارد شوید
+                                                </h4>
+
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label", style = "font-size: 15px" })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                                 </div>
 
-                                                <input type="submit" class="btn btn-main-primary btn-block text-white" value="ورود" />
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control form-control-lg", id = "PasswordInput" } })
+                                                    <i class="bi bi-eye-fill" id="eye"></i>
+                                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label", style = "font-size: 15px" })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div id="rememberDiv" class="mb-3">
+                                                    <label id="rememberLable" class="checkbox path">
+                                                        <input type="checkbox" name="checkboxes" id="checkid">
+                                                        <svg viewBox="0 0 21 21">
+                                                            <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+                                                        </svg>
+                                                    </label>
+                                                    <span id="rememberSpan">مرا به‌خاطر بسپار</span>
+                                                </div>
+
+                                                <div class="pt-1 mb-5">
+                                                    <input type="submit"
+                                                           data-mdb-ripple-init
+                                                           data-mdb-ripple-duration="700ms"
+                                                           id="loginButton"
+                                                           class="btn btn-dark btn-lg btn-block"
+                                                           style="background-color: #f9b17a; color: #424769" value="ورود" />
+                                                </div>
+
+
+                                                <a class="small text-muted" href="/account/ForgotPassword">رمز ورود را فراموش کرده‌اید؟</a>
+                                                <p class="pb-lg-2" style="color: #424769">
+                                                    حساب ندارید؟<a href="/register"
+                                                                   style="color: #424769">ثبت‌نام کنید</a>
+                                                </p>
                                             </form>
-                                            <div class="text-start mt-5 ms-0">
-                                                <div class="mb-1"><a href="forgot.html">رمز ورود را فراموش کرده اید؟</a></div>
-                                                <div>حساب ندارید؟ <a href="signup.html">اینجا ثبت نام کنید</a></div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -101,42 +122,34 @@
                     </div>
                 </div>
             </div>
-            <!-- End Row -->
+        </section>
 
-
-        </div>
-        <!-- END PAGE -->
-        <!-- SCRIPTS -->
-        <!-- JQUERY JS -->
-        <script src="/Content/plugins/jquery/jquery.min.js"></script>
-
-        <!-- BOOTSTRAP JS -->
-        <script src="/Content/plugins/bootstrap/js/popper.min.js"></script>
-        <script src="/Content/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-        <!-- PERFECT SCROLLBAR JS -->
-        <script src="/Content/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
-        <!-- SELECT2 JS -->
-        <script src="/Content/plugins/select2/js/select2.min.js"></script>
-        <script src="/Content/js/select2.js"></script>
-
-
-
-        <!-- COLOR THEME JS -->
-        <script src="/Content/js/themeColors.js"></script>
-
-        <!-- CUSTOM JS -->
-        <script src="/Content/js/custom.js"></script>
-
-        <!-- SWITCHER JS -->
-        <script src="/Content/switcher/js/switcher.js"></script>
-
-        <!-- END SCRIPTS -->
-
-
-
-
-        <div class="main-navbar-backdrop"></div>
+        <script src="/Content/assest/plugins/jq3/jquery-3.7.1.js"></script>
+        <script src="/Content/assest/plugins/bootstrap5.3/js/bootstrap.min.js"></script>
+        <script src="/Content/assest/plugins/mdb/js/mdb.umd.min.js"></script>
+        <script src="/Content/assest/plugins/fontawesome-free-6.6.0-web/js/all.min.js"></script>
+        <script src="/Content/assest/js/script.js"></script>
     </body>
 }
+</html>
+
+<script>
+    $("#loginButton").click(function () {
+        var dataa = $("#checkid").is(":checked")
+        
+        $.ajax({
+            url: 'Account/Login',
+            method: 'POST',
+            data: { 'dataaa': dataa },
+            success: function () {
+                console.log("movafagh")
+            },
+            error: function () {
+                console.log("naaaa movafagh")
+            }
+        });
+    });
+    
+</script>
+
+

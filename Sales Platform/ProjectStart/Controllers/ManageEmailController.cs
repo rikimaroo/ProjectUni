@@ -13,5 +13,10 @@ namespace ProjectStart.Controllers
         {
             return PartialView();
         }
+        
+        public ActionResult ResetPassEmail()
+        {
+            return PartialView();
+        }
     }
 }

@@ -23,3 +23,28 @@ D:\Workspaces\Sales Platform\DataLayer\obj\Debug\Common.csproj.CoreCompileInputs
 D:\Workspaces\Sales Platform\DataLayer\obj\Debug\Common.csproj.CopyComplete
 D:\Workspaces\Sales Platform\DataLayer\obj\Debug\DataLayer.dll
 D:\Workspaces\Sales Platform\DataLayer\obj\Debug\DataLayer.pdb
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\DataLayer.dll.config
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\DataLayer.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\DataLayer.pdb
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\EntityFramework.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Helpers.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Mvc.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Razor.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.Razor.dll
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\EntityFramework.xml
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Helpers.xml
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Mvc.xml
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Razor.xml
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.xml
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.Razor.xml
+E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\Common.csprojAssemblyReference.cache
+E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\Common.csproj.CoreCompileInputs.cache
+E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\Common.csproj.CopyComplete
+E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\DataLayer.dll
+E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\DataLayer.pdb
