@@ -23,6 +23,7 @@ namespace DataLayer
             this.Vendor_Products = new HashSet<Vendor_Products>();
             this.Vendor_Selected_Group = new HashSet<Vendor_Selected_Group>();
             this.Vendors = new HashSet<Vendor>();
+            this.Product_Introduction = new HashSet<Product_Introduction>();
         }
     
         public int UserID { get; set; }
@@ -47,5 +48,7 @@ namespace DataLayer
         public virtual ICollection<Vendor_Selected_Group> Vendor_Selected_Group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendor> Vendors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product_Introduction> Product_Introduction { get; set; }
     }
 }

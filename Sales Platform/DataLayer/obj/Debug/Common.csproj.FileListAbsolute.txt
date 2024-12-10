@@ -38,13 +38,12 @@ E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.Razor.d
 E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\EntityFramework.xml
 E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
 E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Helpers.xml
-E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Mvc.xml
 E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.Razor.xml
 E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.xml
 E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\un\Project Uni\Sales Platform\DataLayer\bin\Debug\System.Web.WebPages.Razor.xml
-E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\Common.csprojAssemblyReference.cache
 E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\Common.csproj.CoreCompileInputs.cache
 E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\Common.csproj.CopyComplete
 E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\DataLayer.dll
 E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\DataLayer.pdb
+E:\un\Project Uni\Sales Platform\DataLayer\obj\Debug\Common.csprojAssemblyReference.cache

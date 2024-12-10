@@ -20,6 +20,7 @@ namespace DataLayer
         public int PeriodIDRef { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<bool> IsFinaly { get; set; }
+        public string TrackingCode { get; set; }
     
         public virtual Period Period { get; set; }
         public virtual Product Product { get; set; }

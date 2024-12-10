@@ -10,6 +10,7 @@
     <Property Name="PeriodIDRef" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime" />
     <Property Name="IsFinaly" Type="bit" />
+    <Property Name="TrackingCode" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Periods">
     <Key>
@@ -35,6 +36,17 @@
     <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="ParentID" Type="int" />
   </EntityType>
+  <EntityType Name="Product_Introduction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Creator" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="Product_Selected_Category">
     <Key>
       <PropertyRef Name="PC_ID" />
@@ -42,6 +54,14 @@
     <Property Name="PC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProductIDRef" Type="int" Nullable="false" />
     <Property Name="CategoryIDRef" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Tags">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IntroductionID" Type="int" Nullable="false" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="250" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -177,6 +197,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Product_Introduction_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Product_Introduction" Type="Self.Product_Introduction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Product_Introduction">
+        <PropertyRef Name="Creator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Product_Selected_Category_Product_Categorys">
     <End Role="Product_Categorys" Type="Self.Product_Categorys" Multiplicity="1" />
     <End Role="Product_Selected_Category" Type="Self.Product_Selected_Category" Multiplicity="*" />
@@ -198,6 +230,18 @@
       </Principal>
       <Dependent Role="Product_Selected_Category">
         <PropertyRef Name="ProductIDRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Tags_Product_Introduction">
+    <End Role="Product_Introduction" Type="Self.Product_Introduction" Multiplicity="1" />
+    <End Role="Product_Tags" Type="Self.Product_Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Introduction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product_Tags">
+        <PropertyRef Name="IntroductionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -338,7 +382,9 @@
     <EntitySet Name="Periods" EntityType="Self.Periods" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Brand" EntityType="Self.Product_Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Categorys" EntityType="Self.Product_Categorys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Introduction" EntityType="Self.Product_Introduction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Selected_Category" EntityType="Self.Product_Selected_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Tags" EntityType="Self.Product_Tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Recive_Vendor_Products" EntityType="Self.Recive_Vendor_Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -363,6 +409,10 @@
       <End Role="Product_Categorys" EntitySet="Product_Categorys" />
       <End Role="Product_Categorys1" EntitySet="Product_Categorys" />
     </AssociationSet>
+    <AssociationSet Name="FK_Product_Introduction_Users" Association="Self.FK_Product_Introduction_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Product_Introduction" EntitySet="Product_Introduction" />
+    </AssociationSet>
     <AssociationSet Name="FK_Product_Selected_Category_Product_Categorys" Association="Self.FK_Product_Selected_Category_Product_Categorys">
       <End Role="Product_Categorys" EntitySet="Product_Categorys" />
       <End Role="Product_Selected_Category" EntitySet="Product_Selected_Category" />
@@ -370,6 +420,10 @@
     <AssociationSet Name="FK_Product_Selected_Category_Products" Association="Self.FK_Product_Selected_Category_Products">
       <End Role="Products" EntitySet="Products" />
       <End Role="Product_Selected_Category" EntitySet="Product_Selected_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Tags_Product_Introduction" Association="Self.FK_Product_Tags_Product_Introduction">
+      <End Role="Product_Introduction" EntitySet="Product_Introduction" />
+      <End Role="Product_Tags" EntitySet="Product_Tags" />
     </AssociationSet>
     <AssociationSet Name="FK_Products_Periods" Association="Self.FK_Products_Periods">
       <End Role="Periods" EntitySet="Periods" />

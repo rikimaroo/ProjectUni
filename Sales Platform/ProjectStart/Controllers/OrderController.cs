@@ -54,7 +54,8 @@ namespace ProjectStart.Controllers
                         ProductID = item.ProductID,
                         PeriodIDRef = 1,// movaghate ta bebinam bayad in chejor handle beshe
                         Date = DateTime.Now,
-                        IsFinaly = true
+                        IsFinaly = true,
+                        TrackingCode = Guid.NewGuid().ToString()
                     });
                     
                 }
@@ -119,7 +120,7 @@ namespace ProjectStart.Controllers
             List<OrderItem> orderList = new List<OrderItem>();
 
             orderList = Session["OrderItem"] as List<OrderItem>;
-            if (orderList.Sum(p=> orderList.Count) == null)
+            if (orderList == null)
             {
                 return 0;
             }

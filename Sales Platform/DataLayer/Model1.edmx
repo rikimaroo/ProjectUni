@@ -15,6 +15,7 @@
           <Property Name="PeriodIDRef" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" />
           <Property Name="IsFinaly" Type="bit" />
+          <Property Name="TrackingCode" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Periods">
           <Key>
@@ -40,6 +41,17 @@
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ParentID" Type="int" />
         </EntityType>
+        <EntityType Name="Product_Introduction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Creator" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Product_Selected_Category">
           <Key>
             <PropertyRef Name="PC_ID" />
@@ -47,6 +59,14 @@
           <Property Name="PC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductIDRef" Type="int" Nullable="false" />
           <Property Name="CategoryIDRef" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Tags">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IntroductionID" Type="int" Nullable="false" />
+          <Property Name="Tags" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -182,6 +202,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Introduction_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Product_Introduction" Type="Self.Product_Introduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product_Introduction">
+              <PropertyRef Name="Creator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_Selected_Category_Product_Categorys">
           <End Role="Product_Categorys" Type="Self.Product_Categorys" Multiplicity="1" />
           <End Role="Product_Selected_Category" Type="Self.Product_Selected_Category" Multiplicity="*" />
@@ -203,6 +235,18 @@
             </Principal>
             <Dependent Role="Product_Selected_Category">
               <PropertyRef Name="ProductIDRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Tags_Product_Introduction">
+          <End Role="Product_Introduction" Type="Self.Product_Introduction" Multiplicity="1" />
+          <End Role="Product_Tags" Type="Self.Product_Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Introduction">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Tags">
+              <PropertyRef Name="IntroductionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -343,7 +387,9 @@
           <EntitySet Name="Periods" EntityType="Self.Periods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Brand" EntityType="Self.Product_Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Categorys" EntityType="Self.Product_Categorys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Introduction" EntityType="Self.Product_Introduction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Selected_Category" EntityType="Self.Product_Selected_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Tags" EntityType="Self.Product_Tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recive_Vendor_Products" EntityType="Self.Recive_Vendor_Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -368,6 +414,10 @@
             <End Role="Product_Categorys" EntitySet="Product_Categorys" />
             <End Role="Product_Categorys1" EntitySet="Product_Categorys" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Introduction_Users" Association="Self.FK_Product_Introduction_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Product_Introduction" EntitySet="Product_Introduction" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_Selected_Category_Product_Categorys" Association="Self.FK_Product_Selected_Category_Product_Categorys">
             <End Role="Product_Categorys" EntitySet="Product_Categorys" />
             <End Role="Product_Selected_Category" EntitySet="Product_Selected_Category" />
@@ -375,6 +425,10 @@
           <AssociationSet Name="FK_Product_Selected_Category_Products" Association="Self.FK_Product_Selected_Category_Products">
             <End Role="Products" EntitySet="Products" />
             <End Role="Product_Selected_Category" EntitySet="Product_Selected_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Tags_Product_Introduction" Association="Self.FK_Product_Tags_Product_Introduction">
+            <End Role="Product_Introduction" EntitySet="Product_Introduction" />
+            <End Role="Product_Tags" EntitySet="Product_Tags" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_Periods" Association="Self.FK_Products_Periods">
             <End Role="Periods" EntitySet="Periods" />
@@ -507,6 +561,16 @@
             <End Role="Vendor_Groups" EntitySet="Vendor_Groups" />
             <End Role="Vendor_Selected_Group" EntitySet="Vendor_Selected_Group" />
           </AssociationSet>
+          <EntitySet Name="Product_Introduction" EntityType="ProjectStart_DBModel.Product_Introduction" />
+          <EntitySet Name="Product_Tags" EntityType="ProjectStart_DBModel.Product_Tags" />
+          <AssociationSet Name="FK_Product_Introduction_Users" Association="ProjectStart_DBModel.FK_Product_Introduction_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Product_Introduction" EntitySet="Product_Introduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Tags_Product_Introduction" Association="ProjectStart_DBModel.FK_Product_Tags_Product_Introduction">
+            <End Role="Product_Introduction" EntitySet="Product_Introduction" />
+            <End Role="Product_Tags" EntitySet="Product_Tags" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -521,6 +585,7 @@
           <NavigationProperty Name="Period" Relationship="ProjectStart_DBModel.FK_Orders_Periods" FromRole="Order" ToRole="Period" />
           <NavigationProperty Name="Product" Relationship="ProjectStart_DBModel.FK_Orders_Products" FromRole="Order" ToRole="Product" />
           <NavigationProperty Name="User" Relationship="ProjectStart_DBModel.FK_Orders_Users" FromRole="Order" ToRole="User" />
+          <Property Name="TrackingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Period">
           <Key>
@@ -627,6 +692,7 @@
           <NavigationProperty Name="Vendor_Products" Relationship="ProjectStart_DBModel.FK_Vendor_Products_Users" FromRole="User" ToRole="Vendor_Products" />
           <NavigationProperty Name="Vendor_Selected_Group" Relationship="ProjectStart_DBModel.FK_Vendor_Selected_Group_Products" FromRole="User" ToRole="Vendor_Selected_Group" />
           <NavigationProperty Name="Vendors" Relationship="ProjectStart_DBModel.FK_Vendors_Users" FromRole="User" ToRole="Vendor" />
+          <NavigationProperty Name="Product_Introduction" Relationship="ProjectStart_DBModel.FK_Product_Introduction_Users" FromRole="User" ToRole="Product_Introduction" />
         </EntityType>
         <EntityType Name="Vendor_Groups">
           <Key>
@@ -875,6 +941,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Product_Introduction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Creator" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="ProjectStart_DBModel.FK_Product_Introduction_Users" FromRole="Product_Introduction" ToRole="User" />
+          <NavigationProperty Name="Product_Tags" Relationship="ProjectStart_DBModel.FK_Product_Tags_Product_Introduction" FromRole="Product_Introduction" ToRole="Product_Tags" />
+        </EntityType>
+        <EntityType Name="Product_Tags">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IntroductionID" Type="Int32" Nullable="false" />
+          <Property Name="Tags" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product_Introduction" Relationship="ProjectStart_DBModel.FK_Product_Tags_Product_Introduction" FromRole="Product_Tags" ToRole="Product_Introduction" />
+        </EntityType>
+        <Association Name="FK_Product_Introduction_Users">
+          <End Type="ProjectStart_DBModel.User" Role="User" Multiplicity="1" />
+          <End Type="ProjectStart_DBModel.Product_Introduction" Role="Product_Introduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product_Introduction">
+              <PropertyRef Name="Creator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Tags_Product_Introduction">
+          <End Type="ProjectStart_DBModel.Product_Introduction" Role="Product_Introduction" Multiplicity="1" />
+          <End Type="ProjectStart_DBModel.Product_Tags" Role="Product_Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Introduction">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Tags">
+              <PropertyRef Name="IntroductionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -884,6 +996,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="ProjectStart_DBModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="TrackingCode" ColumnName="TrackingCode" />
                 <ScalarProperty Name="IsFinaly" ColumnName="IsFinaly" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="PeriodIDRef" ColumnName="PeriodIDRef" />
@@ -1020,6 +1133,27 @@
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="UserIDRef" ColumnName="UserIDRef" />
                 <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Introduction">
+            <EntityTypeMapping TypeName="ProjectStart_DBModel.Product_Introduction">
+              <MappingFragment StoreEntitySet="Product_Introduction">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Tags">
+            <EntityTypeMapping TypeName="ProjectStart_DBModel.Product_Tags">
+              <MappingFragment StoreEntitySet="Product_Tags">
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="IntroductionID" ColumnName="IntroductionID" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
