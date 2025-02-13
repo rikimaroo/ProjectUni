@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signin</title>
+    <title>Blog</title>
     <!-- BOOTSTRAP CSS -->
     <link
       rel="stylesheet"
@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="assest/plugins/mdb/css/mdb.rtl.min.css" />
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="assest/css/style.css" />
+    <link rel="stylesheet" href="assest/css/paging.css" />
+    <link rel="stylesheet" href="assest/css/card.css" />
   </head>
   <body>
 
@@ -44,17 +46,17 @@
                           <a class="nav-link" href="#">درباره ما</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">تماس با ما</a>
+                        <a class="nav-link" href="contact.html">تماس با ما</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">سوالات متداول </a>
+                        <a class="nav-link" href="question.html">سوالات متداول </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">وبلاگ</a>
+                        <a class="nav-link" href="blog.html">وبلاگ</a>
                       </li>
                   </ul>
                   <div id="headerIcon" class="d-flex align-items-center justify-content-start">
-                      <a class="text-reset me-2" href="#">
+                      <a class="text-reset me-1" href="#">
                         <i class=""><img src="assest/images/search.png" style="width: 20px;" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#myModal"></i>
                         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -75,8 +77,23 @@
                       <a class="text-reset me-2" href="#">
                           <i class=""><img src="assest/images/bag.png" style="width: 20px;"></i>
                       </a>
-                      <a class="text-reset me-2" href="#">
-                        <i class=""><img src="assest/images/user.png" style="width: 20px;"></i>
+                      <a class="text-reset" href="#">
+                        <div class="dropdown">
+                          <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <img src="assest/images/user.png" style="width: 20px;">
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                              <li>
+                                  <a class="dropdown-item" href="#">حساب کاربری</a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item" href="#">تنظیمات</a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item" href="#">خروج</a>
+                              </li>
+                          </ul>
+                      </div>
                       </a>
 
                       <!-- Notifications -->
@@ -97,23 +114,6 @@
                               </li>
                           </ul>
                       </div> -->
-                      <!-- Avatar -->
-                      <!-- <div class="dropdown">
-                          <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                              <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                              <li>
-                                  <a class="dropdown-item" href="#">My profile</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="#">Settings</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="#">Logout</a>
-                              </li>
-                          </ul>
-                      </div> -->
                   </div>
               </div>
           </div>
@@ -130,203 +130,307 @@
     <div class="container m-auto mt-5 py-5">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+              <div class="speakers xs-mb30">
+                <div class="spk-img">
+                  <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                  <ul class="position-absolute top-50 start-50 translate-middle">
+                    <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                  </ul>
+                </div>
+              </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">چگونه آموزش ببینیم؟</h5>
               <p class="card-text">
-                This is a wider card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
+                همانطور که از عنوان مقاله مشخص است،
+                 صحبت ما روی آموزش یک موضوع خاص مثل آموزش از کتاب،
+                  ویدئو یا هر آنچه که برای آموزش است نخواهد بود
+                  و این مقاله به صورت جامع در مورد چگونگی آموزش دیدن و یادگیری است.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="امیرمحمد بیگمرادی" class="float-end" href=""><i class="fa-solid fa-user"></i>امیرمحمد بیگمرادی</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-5">
-          <div class="card bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+          <div class="card rounded whos-speaking-area speakers pad100">
+            <div class="speakers xs-mb30">
+              <div class="spk-img">
+                <img src="assest/images/1.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <ul class="position-absolute top-50 start-50 translate-middle">
+                  <button id="btnShow" class="btn position-absolute top-50 start-50 translate-middle" style="width: 110px; height: 40px;" data-mdb-ripple-init>مشاهده</button>
+                </ul>
+              </div>
+            </div>
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
               </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="detail">
+                <span><i class="fa-solid fa-eye"></i> ۵۶</span>
+                <span><i class="fa-solid fa-comments"></i> ۱۲</span>
+                <a title="هانیه اکبری" class="float-end" href=""><i class="fa-solid fa-user"></i>هانیه اکبری</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- <nav class="d-flex justify-content-center mb-5" aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav> -->
+
       <nav class="pagination-container d-flex justify-content-center mb-5">
         <div class="pagination">
           <a href="#" aria-label="Previous">
