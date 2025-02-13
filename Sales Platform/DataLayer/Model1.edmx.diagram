@@ -35,6 +35,10 @@
         <AssociationConnector Association="ProjectStart_DBModel.FK_Vendor_Selected_Group_Products" />
         <AssociationConnector Association="ProjectStart_DBModel.FK_Vendors_Users" />
         <AssociationConnector Association="ProjectStart_DBModel.FK_Vendor_Selected_Group_Vendor_Groups" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Product_Introduction" Width="1.5" PointX="5.25" PointY="14.125" />
+        <EntityTypeShape EntityType="ProjectStart_DBModel.Product_Tags" Width="1.5" PointX="7.5" PointY="14.5" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Product_Introduction_Users" />
+        <AssociationConnector Association="ProjectStart_DBModel.FK_Product_Tags_Product_Introduction" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

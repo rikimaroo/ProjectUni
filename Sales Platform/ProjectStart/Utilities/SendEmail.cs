@@ -11,8 +11,8 @@ namespace ProjectStart
         public static void Send(string To,string Subject,string Body)
         {
             MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("barnamenevisanorg@gmail.com","تاپ لرن");
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
+            mail.From = new MailAddress("amirmohammad063@gmail.com","UniProject");
             mail.To.Add(To);
             mail.Subject = Subject;
             mail.Body = Body;
@@ -21,10 +21,11 @@ namespace ProjectStart
             //System.Net.Mail.Attachment attachment;
             // attachment = new System.Net.Mail.Attachment("c:/textfile.txt");
             // mail.Attachments.Add(attachment);
-
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("barnamenevisanorg@gmail.com", "*****");
+            SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+            SmtpServer.UseDefaultCredentials = false;
+            //SmtpServer.Port = 587;
             SmtpServer.EnableSsl = true;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("amirmohammad063@gmail.com", "qadp grpj omok dedg ");
 
             SmtpServer.Send(mail);
 

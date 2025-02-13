@@ -52,7 +52,7 @@
 
                                             @Html.AntiForgeryToken()
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                            @*@Html.HiddenFor(p => p.RememberMe)*@
+                                            @Html.Hidden("checkboxes")
 
                                             @if (User.Identity.IsAuthenticated && Request.QueryString["ReturnUrl"] != null)
                                             {
@@ -61,7 +61,18 @@
                                                 </div>
                                             }
 
-                                            @if (Request.QueryString["ResetPasswrod"] != null)
+                                            @if (Request.QueryString["ReturnUrl"].Contains("admin") || Request.QueryString["ReturnUrl"].Contains("vendor"))
+                                            {
+                                                <div class="alert alert-danger">
+                                                    <p>شما مجوز دسترسی به این بخش را ندارید</p>
+                                                </div>
+                                            }
+                                            else
+                                            {
+
+                                            }
+
+                                            @if (Request.QueryString["ResetPasswordCheck"] == "true")
                                             {
                                                 <div class="alert alert-success">
                                                     <p>رمز عبور شما با موفقیت تغییر کرد.</p>
@@ -133,14 +144,15 @@
 }
 </html>
 
-<script>
-    $("#loginButton").click(function () {
+@*<script>
+    $("#checkid").click(function () {
         var dataa = $("#checkid").is(":checked")
-        
+        console.log(dataa)
         $.ajax({
-            url: 'Account/Login',
-            method: 'POST',
-            data: { 'dataaa': dataa },
+            url: '/Account/Login',
+            method: 'post',
+            data: { dataaa: dataa },
+            dataType: 'json',
             success: function () {
                 console.log("movafagh")
             },
@@ -148,8 +160,11 @@
                 console.log("naaaa movafagh")
             }
         });
+        $.post('/account/login', { @Model.RememberMe: dataa }, function (res) {
+            console.log("omad inja")
+        });
     });
-    
-</script>
+
+</script>*@
 
 

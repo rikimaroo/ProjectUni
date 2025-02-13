@@ -8,7 +8,6 @@ using DataLayer.ViewModels;
 using System.Web.Security;
 using ProjectStart.Utilities;
 
-
 namespace ProjectStart.Controllers
 {
     public class AccountController : Controller
@@ -90,7 +89,7 @@ namespace ProjectStart.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel login,bool checkboxes = false, bool dataaa = false, string ReturnUrl = "/")
+        public ActionResult Login(LoginViewModel login, FormCollection form, string ReturnUrl = "/")
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +101,12 @@ namespace ProjectStart.Controllers
                     {
                         if (user.IsActive)
                         {
-                            FormsAuthentication.SetAuthCookie(user.UserName, login.RememberMe);
+                            bool rememberme = false;
+                            if (form["checkboxes"] == ",on")
+                            {
+                                rememberme = true;
+                            }
+                            FormsAuthentication.SetAuthCookie(user.UserName, rememberme);
                             return Redirect(ReturnUrl);
                         }
                         else
@@ -154,14 +158,14 @@ namespace ProjectStart.Controllers
                         {
                             string body = PartialToStringClass.RenderPartialView("ManageEmail", "ResetPassEmail", user);
                             SendEmail.Send(user.Email, "بازیابی کلمه عبور", body);
-                            return View();
+                            return Redirect("/Account/ForgotPassword?ForgotPasswordCheck=true");
                         }
                     }
                     else
                     {
                         ModelState.AddModelError("Email", "حساب کاربری شما فعال نیست.");
                     }
-                    ResetPassword(email);
+                    //ResetPassword(email);
                     return View("Login");
                 }
                 else
@@ -192,7 +196,7 @@ namespace ProjectStart.Controllers
                 user.Password = FormsAuthentication.HashPasswordForStoringInConfigFile(model.Password, "MD5");
                 user.ActiveCode = Guid.NewGuid().ToString();
                 db.SaveChanges();
-                return Redirect("/Login?ResetPassword=true");
+                return Redirect("/Account/Login?ResetPasswordCheck=true");
             }
             return View();
         }

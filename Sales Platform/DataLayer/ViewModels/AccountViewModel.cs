@@ -117,11 +117,13 @@ namespace DataLayer.ViewModels
     {
         [Display(Name = "رمز عبور جدید")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(Name = "تکرار رمز عبور جدید")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [Compare("Password", ErrorMessage = "کلمه عبور با یکدیگر مغایرت دارند")]
+        [DataType(DataType.Password)]
         public string RePassword { get; set; }
     }
 }

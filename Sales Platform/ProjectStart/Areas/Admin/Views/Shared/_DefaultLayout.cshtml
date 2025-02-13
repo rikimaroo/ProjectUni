@@ -19,6 +19,18 @@
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Kendo/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Kendo/styles/kendo.common.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    @*<script src="~/Kendo/js/jquery.min.js"></script>*@
+
+
+    <script src="~/Kendo/js/kendo.all.min.js"></script>
+    @*<script src="~/Kendo/js/kendo.web.min.js"></script>*@
+    <script src="~/Kendo/js/kendo.aspnetmvc.min.js"></script>
+    @*<script src="https://kendo.cdn.telerik.com/2019.2.619/js/jquery.min.js"></script>*@
+    @*<script src="~/Scripts/modernizr-2.8.3.js"></script>*@
 
     <!-- ICONS CSS -->
     <link href="~/Content/plugins/web-fonts/icons.css" rel="stylesheet">
@@ -563,8 +575,8 @@
                                     </a>
                                     <div class="dropdown-menu">
                                         <div class="header-navheading">
-                                            <h6 class="main-notification-title">سونیا تیلور</h6>
-                                            <p class="main-notification-text">طراح وب</p>
+                                            <h6 class="main-notification-title">@User.Identity.Name</h6>
+                                            <p class="main-notification-text">@Session["UserName"]</p>@*inja fekr konam dashtam esm profile ro dorost mikardam*@
                                         </div>
                                         <a class="dropdown-item border-top" href="@Url.Action("Index", "Account", new { area = "UserPanel"})">
                                             <i class="fe fe-user"></i> پروفایل من
@@ -1029,12 +1041,12 @@
                     <!-- End Page Header -->
                     <!--Row-->
                     <div class="row row-sm">
-                    
+
                         <div class="col-sm-12 col-lg-12 col-xl-12">
                             @RenderBody()
                         </div>
                         <!-- col end -->
-                            @RenderSection("SideBarLeft", false)
+                        @RenderSection("SideBarLeft", false)
                         <!-- col end -->
                     </div><!-- Row end -->
 
@@ -1173,12 +1185,11 @@
     <a href="#top" id="back-to-top"><i class="fe fe-arrow-up"></i></a>
 
     <!-- JQUERY JS -->
-    <script src="~/Content/plugins/jquery/jquery.min.js"></script>
+    @*<script src="~/Content/plugins/jquery/jquery.min.js"></script>*@
 
     <!-- BOOTSTRAP JS -->
     <script src="~/Content/plugins/bootstrap/js/popper.min.js"></script>
     <script src="~/Content/plugins/bootstrap/js/bootstrap.min.js"></script>
-
     <!-- PERFECT SCROLLBAR JS -->
     <script src="~/Content/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 

@@ -1,42 +1,71 @@
 ﻿@model DataLayer.Product
 
 
-
-<div class="col-md-4 col-sm-6">
-    <div class="border-radius">
-        <span>
-            <img style="width:100%; height:150px" onclick="ShowProduct(@Model.ProductID)" src="~/Images/ProductImages/Thumb/@Model.ImageName">
-        </span>
-        <h2>
-            <a href="/ShowProduct/@Model.ProductID">@Model.Title</a>
-        </h2>
-        <span class="col-md-9 col-sm-9 col-xs-9 price-layer">
-            <label>@Model.Price.ToString("#,0")</label>
-        </span>
-        <br />
-        <div class="row" style="display:inline; ">
-            <a class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 buy-button border-radius">
-                <label onclick="AddMinusItem(@Model.ProductID)"><i class="glyphicon glyphicon-plus"></i></label>
-            </a>
-            <a class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 buy-button border-radius k-d-inline-flex">
-                <label onclick="AddMinusItem(@Model.ProductID, true)"><i class="glyphicon glyphicon-minus"></i></label>
-            </a>
-
+<div class="col-md-4 col-lg-6 col-xl-4 col-sm-6">
+    <div class="card custom-card h-100">
+        <div class="p-0 ht-100p">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="#" class="image card-img-top">
+                        @*inja bayad andaze card haro dorotst koni*@
+                        <img style="width:100%; height:150px" class="pic-1" alt="محصول-تصویر-1" src="~/Images/ProductImages/Thumb/no_image.jpg" onclick="ShowProduct(@Model.ProductID">
+                        <img style="width:100%; height:150px" class="pic-2" alt="محصول-تصویر-2" src="~/Images/ProductImages/Thumb/@Model.ImageName" onclick="ShowProduct(@Model.ProductID">
+                    </a>
+                    <a class="product-like-icon" href="#"><i class="far fa-heart"></i></a>
+                    <span class="product-discount-label">-33٪</span>
+                    <div class="product-link">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>افزودن به سبد خرید</span>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-eye"></i>
+                            <span>مشاهده سریع</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="border-radius">
+                    <h3 class="title"><a href="#">@Model.Title</a></h3>
+                    <div class="price"><span class="old-price">@Model.Price تومان </span><span class="text-danger">@Model.Price تومان</span></div>
+                    <ul class="rating">
+                        <li class="fas fa-star"></li>
+                        <li class="fas fa-star"></li>
+                        <li class="fas fa-star"></li>
+                        <li class="fas fa-star"></li>
+                        <li class="far fa-star"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
 
-@*<script>
-    $(document).ready(function () {
-        gett();
-    });
-    function gett() {
-        $.ajax({
-            url: "/Order/CountOrderItem",
-            type: "GET",
-            success: function (res) {
-                console.log("sdsddsdsdsdsddsdsdsdsdds");
-            }
-        });
-    }
-</script>*@
+
+
+
+@*<div class="col-md-4 col-sm-6">
+        <div class="border-radius">
+            <span>
+                <img style="width:100%; height:150px" onclick="ShowProduct(@Model.ProductID)" src="~/Images/ProductImages/Thumb/@Model.ImageName">
+            </span>
+            <h2>
+                <a href="/ShowProduct/@Model.ProductID">@Model.Title</a>
+            </h2>
+            <span class="col-md-9 col-sm-9 col-xs-9 price-layer">
+                <label>@Model.Price.ToString("#,0")</label>
+            </span>
+            <br />
+            <div class="row" style="display:inline; ">
+                <a class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 buy-button border-radius">
+                    <label onclick="AddMinusItem(@Model.ProductID)"><i class="glyphicon glyphicon-plus"></i></label>
+                </a>
+                <a class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 buy-button border-radius k-d-inline-flex">
+                    <label onclick="AddMinusItem(@Model.ProductID, true)"><i class="glyphicon glyphicon-minus"></i></label>
+                </a>
+
+            </div>
+        </div>
+    </div>*@
+
+
