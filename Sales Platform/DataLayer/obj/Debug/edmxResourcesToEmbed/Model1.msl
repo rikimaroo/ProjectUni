@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="ProjectStart_DBModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="TrackingCode" ColumnName="TrackingCode" />
           <ScalarProperty Name="IsFinaly" ColumnName="IsFinaly" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="PeriodIDRef" ColumnName="PeriodIDRef" />
@@ -140,6 +141,27 @@
           <ScalarProperty Name="Company" ColumnName="Company" />
           <ScalarProperty Name="UserIDRef" ColumnName="UserIDRef" />
           <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Introduction">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Product_Introduction">
+        <MappingFragment StoreEntitySet="Product_Introduction">
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Tags">
+      <EntityTypeMapping TypeName="ProjectStart_DBModel.Product_Tags">
+        <MappingFragment StoreEntitySet="Product_Tags">
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="IntroductionID" ColumnName="IntroductionID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,9 +1,11 @@
-﻿
+﻿@using Kendo.Mvc.UI
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@Html.Action("LastProduct", "Product", new { area = "" })
 
-@Html.Action("LastProduct", "Product", new { area = ""})
+<script>
 
+</script>

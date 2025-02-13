@@ -1,11 +1,41 @@
-﻿
+﻿@model List<DataLayer.ViewModels.KendoUi>
+@using Kendo.Mvc.UI
+@using DataLayer
 @{
     ViewBag.Title = "پیشخوان ادمین";
-}
 
-<div>
-    <p>IndeX</p>
+    List<int> count = new List<int>();
+    List<DateTime> datetime = new List<DateTime>();
+
+    foreach (var item in Model)
+    {
+        count.Add(item.Count);
+        datetime.Add(item.Day);
+    }
+}
+<div class="col-md-10">
+    <div class="card custom-card">
+        @(Html.Kendo().Chart()
+            .Name("KendoChart")
+            .Legend(p => p.Position(ChartLegendPosition.Top))
+            .ChartArea(p => p.Background("transparent"))
+            @*.DataSource(source => source
+            .Read(read => read.Action("GetCountOrders", "Home")))*@
+            .Series(p => {
+
+                p.Column(count)
+                .Name("Tedad");
+            })
+            .Tooltip(p=> p.Visible(true))
+            .CategoryAxis(p=> p.Name("Time")
+            .Categories(datetime))
+            .ValueAxis(p=> p.Numeric())
+            .Pannable()
+
+            )
+    </div>
 </div>
+
 
 @section SideBarLeft{
     @Html.Action("SideLeft")

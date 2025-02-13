@@ -1,0 +1,8 @@
+﻿@model DataLayer.User
+@using System.Configuration;
+
+<div style="direction:rtl; padding:20px">
+    <h2>@Model.UserName</h2>
+    <p>برای تغییر رمز عبور خود بر روی لینک زیر کلیک کنید.</p>
+    <a href="@ConfigurationManager.AppSettings["MyDomain"]/Account/ResetPassword/@Model.ActiveCode">بازیابی رمز عبور</a>
+</div>

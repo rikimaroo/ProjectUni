@@ -104,4 +104,26 @@ namespace DataLayer.ViewModels
         [Compare("NewPassword", ErrorMessage ="کلمه عبور جدید با یک دیگر مغایرت دارند")]
         public string ReNewPassword { get; set; }
     }
+
+    public class ForgotPasswordViewModel
+    {
+        [Display(Name = "ایمیل")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+    }
+
+    public class ResetPasswordViewModel
+    {
+        [Display(Name = "رمز عبور جدید")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Display(Name = "تکرار رمز عبور جدید")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [Compare("Password", ErrorMessage = "کلمه عبور با یکدیگر مغایرت دارند")]
+        [DataType(DataType.Password)]
+        public string RePassword { get; set; }
+    }
 }
